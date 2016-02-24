@@ -1,0 +1,14 @@
+{
+  "name": "unlisted-friends",
+  "version": "1.0.0",
+  "description": "A tool for check if you have friends that are not in any of your lists.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guillermo Rodas <garethderioth@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.2"
+  }
+}
