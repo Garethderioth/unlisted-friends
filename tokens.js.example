@@ -1,0 +1,11 @@
+/**
+ * Visit https://dev.twitter.com/apps and register a new application.
+ * On the application 'Keys and Access Tokens' page, click on
+ * "Create my access token" to generate an access token and secret.
+ */
+module.exports = {
+  CONSUMER_KEY:        '<PUT HERE YOUR KEY>',
+  CONSUMER_SECRET:     '<PUT HERE YOUR KEY>',
+  ACCESS_TOKEN:        '<PUT HERE YOUR KEY>',
+  ACCESS_TOKEN_SECRET: '<PUT HERE YOUR KEY>',
+}
