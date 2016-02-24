@@ -1,6 +1,8 @@
-var Twit = require('twit')
+'use strict';
 
-var T = new Twit({
+const Twit = require('twit');
+
+const T = new Twit({
   consumer_key: 'n0wm5PsJHfNJSXl1KQFMttvTF',
   consumer_secret: '9HkO9UUH0oE5h1RuJkAYvt6DZPXn9Rb9QFRQUHDDvV0dYBHX72',
   access_token: '18968309-p2Khy4SoBUftQReJQ0X3An57ekdFau03TL4D0XSdf',
@@ -13,11 +15,11 @@ var T = new Twit({
  * @return {[type]}            [description]
  */
 function getFriendsIds(friendsList, callback) {
-  var currentFriendsList = friendsList || [];
+  let currentFriendsList = friendsList || [];
 
-  T.get('friends/list', {count: 200}, function(err, data, response) {
+  T.get('friends/list', {count: 200}, (err, data, response) => {
     if (!err) {
-      currentFriendsList.push(data.users.map(function(user) {
+      currentFriendsList.push(data.users.map(user => {
         return { userId: user.id, userName: user.screen_name };
       }));
 
@@ -37,9 +39,9 @@ function getFriendsIds(friendsList, callback) {
  * @return {[type]} [description]
  */
 function getListsIds(callback) {
-  T.get('lists/list', {count: 100, reverse: true }, function(err, data, response) {
+  T.get('lists/list', {count: 100, reverse: true }, (err, data, response) => {
     if (!err) {
-      callback(data.map(function(list) {
+      callback(data.map(list => {
         return { listId: list.id, listName: list.name };
       }));
     } else {
@@ -48,13 +50,21 @@ function getListsIds(callback) {
   });
 }
 
+/**
+ * [getListsMembers description]
+ * @param  {[type]}   lists     [description]
+ * @param  {[type]}   index     [description]
+ * @param  {[type]}   usersList [description]
+ * @param  {Function} callback  [description]
+ * @return {[type]}             [description]
+ */
 function getListsMembers(lists, index, usersList, callback) {
-  var currentIndex = index || 0;
-  var currentUsersList = usersList || [];
+  let currentIndex = index || 0;
+  let currentUsersList = usersList || [];
 
-  T.get('lists/members', {list_id: lists[currentIndex].listId }, function(err, data, response) {
+  T.get('lists/members', {list_id: lists[currentIndex].listId }, (err, data, response) => {
     if (!err) {
-      currentUsersList.push(data.users.map(function(user) {
+      currentUsersList.push(data.users.map(user => {
         return { userId: user.id, userName: user.screen_name };
       }));
 
@@ -71,21 +81,18 @@ function getListsMembers(lists, index, usersList, callback) {
   });
 }
 
-getFriendsIds(null, function(friends) {
+getFriendsIds(null, friends => {
 
-  getListsIds(function(lists) {
+  getListsIds(lists => {
 
-    getListsMembers(lists, null, null, function(users) {
+    getListsMembers(lists, null, null, users => {
       console.log('USERS', users.length);
       console.log('FRIENDS', friends.length);
 
-      var unlistedFriends = friends.filter(function(friend) {
-          users.forEach(function(user) {
-            if (user.userId === friend.userId) {
-              return true;
-            }
-          });
-          return false;
+      const unlistedFriends = friends.filter(friend => {
+        return users.filter(user => {
+          return user.userId === friend.userId;
+        }).length === 0;
       });
 
       console.log(unlistedFriends);
