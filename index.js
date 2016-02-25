@@ -21,11 +21,9 @@ function getFriendsIds(friendsList, cursor, callback) {
 
   twitter.get('friends/list', {count: 200, cursor: currentCursor}, (err, data, response) => {
     if (!err) {
-      currentFriendsList.push(data.users.map(user => {
+      currentFriendsList = currentFriendsList.concat(data.users.map(user => {
         return { userId: user.id, userName: user.screen_name };
       }));
-
-      console.log(currentCursor);
 
       if (data.next_cursor) {
         getFriendsIds(currentFriendsList, data.next_cursor, callback);
@@ -66,9 +64,9 @@ function getListsMembers(lists, index, usersList, callback) {
   let currentIndex = index || 0;
   let currentUsersList = usersList || [];
 
-  twitter.get('lists/members', {list_id: lists[currentIndex].listId }, (err, data, response) => {
+  twitter.get('lists/members', {list_id: lists[currentIndex].listId, count: 5000 }, (err, data, response) => {
     if (!err) {
-      currentUsersList.push(data.users.map(user => {
+      currentUsersList = currentUsersList.concat(data.users.map(user => {
         return { userId: user.id, userName: user.screen_name };
       }));
 
@@ -77,6 +75,7 @@ function getListsMembers(lists, index, usersList, callback) {
       if (lists[currentIndex]) {
         getListsMembers(lists, currentIndex, currentUsersList, callback);
       } else {
+
         callback(currentUsersList);
       }
     } else {
@@ -85,16 +84,15 @@ function getListsMembers(lists, index, usersList, callback) {
   });
 }
 
-
 function init() {
-  getFriendsIds(null, friends => {
-    console.info('FRIENDS_LENGTH:', friends.length);
+  getFriendsIds(null, null, friends => {
+    //console.info('FRIENDS_LENGTH:', friends.length);
 
     getListsIds(lists => {
-      console.info('LIST_LENGTH:', lists.length);
+      //console.info('LIST_LENGTH:', lists.length);
 
       getListsMembers(lists, null, null, users => {
-        console.info('USERS_LENGTH:', users.length);
+        //console.info('USERS_LENGTH:', users.length);
 
         const unlistedFriends = friends.filter(friend => {
           return users.filter(user => {
@@ -102,11 +100,13 @@ function init() {
           }).length === 0;
         });
 
-        console.log(unlistedFriends);
+        console.log(unlistedFriends.map(unlistedFriend => {
+          return '@' + unlistedFriend.userName;
+        }).join('\n'));
       });
     });
   });
 }
 
-//init();
-getFriendsIds(null, null, friends => { console.info('FRIENDS_LENGTH:', friends.length); });
+init();
+//getFriendsIds(null, null, friends => { console.info('FRIENDS_LENGTH:', friends.length); });
