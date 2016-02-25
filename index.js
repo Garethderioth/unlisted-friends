@@ -100,9 +100,13 @@ function init() {
           }).length === 0;
         });
 
-        console.log(unlistedFriends.map(unlistedFriend => {
-          return '@' + unlistedFriend.userName;
-        }).join('\n'));
+        if (unlistedFriends.length === 0 ) {
+          console.log('Congratulations! All your friends are in a list!');
+        } else {
+          console.log(unlistedFriends.map(unlistedFriend => {
+            return 'https://twitter.com/' + unlistedFriend.userName;
+          }).join('\n'));
+        }
       });
     });
   });
