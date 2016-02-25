@@ -4,10 +4,9 @@ const tokens = require('./tokens');
 const Twit = require('twit');
 
 const twitter = new Twit({
-  consumer_key:        tokens.CONSUMER_KEY,
-  consumer_secret:     tokens.CONSUMER_SECRET,
-  access_token:        tokens.ACCESS_TOKEN,
-  access_token_secret: tokens.ACCESS_TOKEN_SECRET,
+  consumer_key: tokens.CONSUMER_KEY,
+  consumer_secret: tokens.CONSUMER_SECRET,
+  app_only_auth: true,
 });
 
 /**
@@ -15,18 +14,18 @@ const twitter = new Twit({
  * @param  {Function} callback [description]
  * @return {[type]}            [description]
  */
-function getFriendsIds(friendsList, cursor, callback) {
+function getFriendsIds(username, friendsList, cursor, callback) {
   let currentFriendsList = friendsList || [];
   let currentCursor = cursor || -1;
 
-  twitter.get('friends/list', {count: 200, cursor: currentCursor}, (err, data, response) => {
+  twitter.get('friends/list', {count: 200, cursor: currentCursor, screen_name: username}, (err, data, response) => {
     if (!err) {
       currentFriendsList = currentFriendsList.concat(data.users.map(user => {
         return { userId: user.id, userName: user.screen_name };
       }));
 
       if (data.next_cursor) {
-        getFriendsIds(currentFriendsList, data.next_cursor, callback);
+        getFriendsIds(username, currentFriendsList, data.next_cursor, callback);
       } else {
         callback(currentFriendsList);
       }
@@ -40,8 +39,8 @@ function getFriendsIds(friendsList, cursor, callback) {
  * [getListsIds description]
  * @return {[type]} [description]
  */
-function getListsIds(callback) {
-  twitter.get('lists/list', {count: 100, reverse: true }, (err, data, response) => {
+function getListsIds(username, callback) {
+  twitter.get('lists/list', {count: 100, reverse: true, screen_name: username }, (err, data, response) => {
     if (!err) {
       callback(data.map(list => {
         return { listId: list.id, listName: list.name };
@@ -84,11 +83,15 @@ function getListsMembers(lists, index, usersList, callback) {
   });
 }
 
-function init() {
-  getFriendsIds(null, null, friends => {
+/**
+ * [init description]
+ * @return {[type]} [description]
+ */
+function init(username) {
+  getFriendsIds(username, null, null, friends => {
     //console.info('FRIENDS_LENGTH:', friends.length);
 
-    getListsIds(lists => {
+    getListsIds(username, lists => {
       //console.info('LIST_LENGTH:', lists.length);
 
       getListsMembers(lists, null, null, users => {
@@ -112,5 +115,5 @@ function init() {
   });
 }
 
-init();
+init('Garethderioth');
 //getFriendsIds(null, null, friends => { console.info('FRIENDS_LENGTH:', friends.length); });
