@@ -1,7 +1,7 @@
 {
   "name": "unlisted-friends",
   "version": "1.0.0",
-  "description": "A tool for check if you have friends that are not in any of your lists.",
+  "description": "A simple tool for verify which friends are not in your lists.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

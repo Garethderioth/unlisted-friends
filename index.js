@@ -10,6 +10,23 @@ const members = require('./lib/members');
  * @return {[type]}          [description]
  */
 function init(username) {
+
+  friends(username).then(friendList => {
+    console.info('FRIENDS LENGTH:', friendList.length);
+  });
+
+  /*
+  Promise.all([friends(username), lists(username)]).then(response => {
+    const friendsList = response[0];
+    const userLists = response[1];
+
+    members(userLists).then(membersList => {
+
+    });
+  });
+  */
+
+  /*
   friends(username, null, null, friendList => {
     console.info('FRIENDS_LENGTH:', friendList.length);
 
@@ -40,6 +57,7 @@ function init(username) {
       });
     });
   });
+  */
 }
 
 // TODO: Move this to UI
