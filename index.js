@@ -4,61 +4,42 @@ const friends = require('./lib/friends');
 const lists = require('./lib/lists');
 const members = require('./lib/members');
 
+
+function filterFriends(friendsList, membersList) {
+  return friendList.filter(friend => {
+    return membersList.filter(user => {
+      return user.id === friend.id;
+    }).length === 0;
+  });
+}
+
 /**
  * [init description]
  * @param  {[type]} username [description]
  * @return {[type]}          [description]
  */
 function init(username) {
-
-  friends(username).then(friendList => {
-    console.info('FRIENDS LENGTH:', friendList.length);
-  });
-
-  /*
   Promise.all([friends(username), lists(username)]).then(response => {
     const friendsList = response[0];
     const userLists = response[1];
 
     members(userLists).then(membersList => {
 
-    });
-  });
-  */
+      const unlistedFriends = filterFriends(friendsList, membersList);
 
-  /*
-  friends(username, null, null, friendList => {
-    console.info('FRIENDS_LENGTH:', friendList.length);
+      console.log(unlistedFriends);
 
-    lists(username, userLists => {
-      console.info('LIST_LENGTH:', userLists.length);
-
-      if(!userLists.length) {
-        console.log('You dont have lists, or your lists are privated');
-        return;
+      if (unlistedFriends.length === 0 ) {
+        console.log('Congratulations! All your friends are in a list!');
+      } else {
+        console.log(unlistedFriends.map(unlistedFriend => {
+          return 'https://twitter.com/' + unlistedFriend.userName;
+        }).join('\n'));
       }
+    }, reason => { console.log(reason); });
 
-      members(userLists, null, null, member => {
-        console.info('USERS_LENGTH:', member.length);
-
-        const unlistedFriends = friendList.filter(friend => {
-          return member.filter(user => {
-            return user.userId === friend.userId;
-          }).length === 0;
-        });
-
-        if (unlistedFriends.length === 0 ) {
-          console.log('Congratulations! All your friends are in a list!');
-        } else {
-          console.log(unlistedFriends.map(unlistedFriend => {
-            return 'https://twitter.com/' + unlistedFriend.userName;
-          }).join('\n'));
-        }
-      });
-    });
-  });
-  */
+  }, reason => { console.log(reason); });
 }
 
-// TODO: Move this to UI
+// TODO: Move to as a service
 init('Garethderioth');
