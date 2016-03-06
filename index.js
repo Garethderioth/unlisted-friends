@@ -1,16 +1,20 @@
 'use strict';
 
+const filterFriends = require('./lib/utils/filter-friends');
 const friends = require('./lib/friends');
 const lists = require('./lib/lists');
 const members = require('./lib/members');
 
-
-function filterFriends(friendsList, membersList) {
-  return friendList.filter(friend => {
-    return membersList.filter(user => {
-      return user.id === friend.id;
-    }).length === 0;
-  });
+/**
+ * [printFriends description]
+ * @param  {[type]} friendsList [description]
+ * @return {[type]}             [description]
+ */
+function printFriends(friendsList) {
+  return friendsList ?
+    friendsList
+    .map(friend => ('https://twitter.com/' + friend.name))
+    .join('\n') : 'Congratulations! All your friends are in a list!';
 }
 
 /**
@@ -24,21 +28,17 @@ function init(username) {
     const userLists = response[1];
 
     members(userLists).then(membersList => {
+      console.info('# Friends:', friendsList.length);
+      console.info('# Public lists:', userLists.length);
+      console.info("# Members on lists:", membersList.length);
 
-      const unlistedFriends = filterFriends(friendsList, membersList);
-
-      console.log(unlistedFriends);
-
-      if (unlistedFriends.length === 0 ) {
-        console.log('Congratulations! All your friends are in a list!');
-      } else {
-        console.log(unlistedFriends.map(unlistedFriend => {
-          return 'https://twitter.com/' + unlistedFriend.userName;
-        }).join('\n'));
-      }
-    }, reason => { console.log(reason); });
-
-  }, reason => { console.log(reason); });
+      console.log(printFriends(filterFriends(friendsList, membersList)));
+    }, reason => {
+      console.error(reason);
+    });
+  }, reason => {
+    console.error(reason);
+  });
 }
 
 // TODO: Move to as a service
