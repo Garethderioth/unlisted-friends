@@ -12,7 +12,7 @@ const members = require('./lib/members');
  */
 function printFriends(friendsList) {
   return friendsList && friendsList.length ? '\n' + friendsList
-    .map(friend => ('https://twitter.com/' + friend.name))
+    .map(friend => (`https://twitter.com/${friend.name}`))
     .join('\n') : '\nCongratulations! All your friends are in a list!';
 }
 
@@ -27,9 +27,9 @@ function init(username) {
     const userLists = response[1];
 
     members(userLists).then(membersList => {
-      console.info('Friends:', friendsList.length);
-      console.info('Lists:', userLists.length);
-      console.info("Members:", membersList.length);
+      console.info(`Friends: ${friendsList.length}`);
+      console.info(`Lists: ${userLists.length}`);
+      console.info(`Members: ${membersList.length}`);
 
       console.log(printFriends(filterFriends(friendsList, membersList)));
     }, reason => {
