@@ -10,5 +10,9 @@
   "license": "MIT",
   "dependencies": {
     "twit": "^2.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.1.0"
   }
 }
