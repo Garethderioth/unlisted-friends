@@ -34,7 +34,7 @@ function printResults(username, friendsList) {
  * @return {void}
  */
 
-function printSummary(friendsList, userLists, membersList, unlistedFriends) {
+function printSummary(userLists, friendsList, membersList, unlistedFriends) {
   const summary = [
     `Lists: ${userLists.length}`,
     `Friends: ${friendsList.length}`,
@@ -54,11 +54,14 @@ function printSummary(friendsList, userLists, membersList, unlistedFriends) {
  */
 function getMembers(Twitter, username, friendsList, userLists) {
   members(Twitter, userLists).then(membersList => {
+    // TODO: Remove
+    console.log(membersList.length);
+
     const unlisted = filterFriends(friendsList, membersList);
 
     // Print the results on console
     printResults(username, unlisted);
-    printSummary(friendsList, userLists, membersList, unlisted);
+    printSummary(userLists, friendsList, membersList, unlisted);
   }, reason => {
     console.log(reason);
   });
@@ -84,13 +87,18 @@ function getUnlistedFriends(username, consumerKey, consumerSecret) {
   });
 
   Promise.all([friends(Twitter, username), lists(Twitter, username)]).then(response => {
-    console.log(response[0].length, response[1].length);
+    // TODO: Remove
+    console.log(response[0].length);
+    console.log(response[1].length);
 
     getMembers(Twitter, username, response[0], response[1]);
   }, reason => {
     console.log(reason);
   });
 }
+
+// Command line input
+getUnlistedFriends(process.argv[2]);
 
 module.exports = {
   get: getUnlistedFriends,
