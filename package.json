@@ -6,13 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Garethderioth/unlisted-friends.git"
+  },
+  "keywords": [
+    "twitter",
+    "unlisted",
+    "friends"
+  ],
   "author": "Guillermo Rodas <garethderioth@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "twit": "^2.2.2"
+    "twit": "2.2.2"
   },
   "devDependencies": {
-    "eslint": "^2.4.0",
-    "eslint-config-airbnb": "^6.1.0"
+    "eslint": "2.4.0",
+    "eslint-config-airbnb": "6.1.0"
   }
 }
