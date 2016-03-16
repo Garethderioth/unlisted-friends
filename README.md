@@ -13,7 +13,6 @@ You need to provide your own application keys for use the **Twitter API**.
 // TODO
 
 ## Roadmap
-* Documentation
 * Refactor into a API/Module
 * Refactor put keys via constructor
 * Refactor to use Map() or Set()

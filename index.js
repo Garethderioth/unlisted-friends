@@ -7,8 +7,8 @@ const members = require('./lib/members');
 
 /**
  * Print the result of the search given a list of friends.
- * @param  {string} username - The twitter username
- * @param  {Object[{id: number, name: string}]} friendsList - The list of friends
+ * @param {string} username - The twitter username.
+ * @param {Object[{id: number, name: string}]} friendsList - The list of friends.
  * @return {void}
  */
 function printResults(username, friendsList) {
@@ -23,12 +23,13 @@ function printResults(username, friendsList) {
 
 /**
  * Print the summary of the search given every list.
- * @param  {Object[{id: number, name: string}]} friendsList - The list of friends
- * @param  {Object[{id: number, name: string}]} userLists - The lists of user's list
- * @param  {Object[{id: number, name: string}} membersList - The list of the list's members
- * @param  {Object[{id: number, name: string}} unlistedFriends - The list of the unlisted friends.
+ * @param {Object[{id: number, name: string}]} friendsList - The list of friends.
+ * @param {Object[{id: number, name: string}]} userLists - The lists of user's list.
+ * @param {Object[{id: number, name: string}} membersList - The list of the list's members.
+ * @param {Object[{id: number, name: string}} unlistedFriends - The list of the unlisted friends.
  * @return {void}
  */
+
 function printSummary(friendsList, userLists, membersList, unlistedFriends) {
   const summary = [
     `Friends: ${friendsList.length}`,
@@ -42,17 +43,16 @@ function printSummary(friendsList, userLists, membersList, unlistedFriends) {
 
 /**
  * Get the members of the given lists using a Promise.
- * @param  {Object[{id: number, name: string}]} friendsList - The list of friends
- * @param  {Object[{id: number, name: string}]} userLists - The lists of user's list
+ * @param {string} username - The twitter username.
+ * @param {Object[{id: number, name: string}]} friendsList - The list of friends.
+ * @param {Object[{id: number, name: string}]} userLists - The lists of user's list
  * @return {void}
  */
 function getMembers(username, friendsList, userLists) {
   members(userLists).then(membersList => {
-    const unlistedFriends = filterFriends(friendsList, membersList);
-
-    // TODO: Move the print functions to the point #1
-    printSummary(friendsList, userLists, membersList, unlistedFriends);
-    printResults(username, unlistedFriends);
+    const unlistedList = filterFriends(friendsList, membersList);
+    printSummary(friendsList, userLists, membersList, unlistedList);
+    printResults(username, unlistedList);
   }, reason => {
     console.error(reason);
   });
@@ -60,8 +60,8 @@ function getMembers(username, friendsList, userLists) {
 
 /**
  * Get the list of the unlisted friends.
- * @param  {[type]} username [description]
- * @return {[type]}          [description]
+ * @param  {string} username - The twitter username.
+ * @return {void}
  */
 function getUnlistedFriends(username) {
   Promise.all([
@@ -69,7 +69,6 @@ function getUnlistedFriends(username) {
     lists(username),
   ]).then(response => {
     getMembers(username, response[0], response[1]);
-    // TODO: Point #1
   }, reason => {
     console.error(reason);
   });
