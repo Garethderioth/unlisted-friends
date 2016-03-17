@@ -4,7 +4,7 @@
   "description": "A simple tool for verify which friends are not in your lists.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape 'tests/**/*.js' | faucet"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,8 @@
   },
   "devDependencies": {
     "eslint": "2.4.0",
-    "eslint-config-airbnb": "6.1.0"
+    "eslint-config-airbnb": "6.1.0",
+    "faucet": "0.0.1",
+    "tape": "4.5.1"
   }
 }

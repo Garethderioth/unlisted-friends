@@ -1,12 +1,13 @@
 'use strict';
 
 const filterFriends = require('./lib/utils/filter-friends');
-const keys = require('./keys');
+
 
 const friends = require('./lib/friends');
 const lists = require('./lib/lists');
 const members = require('./lib/members');
 
+const keys = require('./keys');
 const Twit = require('twit');
 
 /**
@@ -67,11 +68,6 @@ function getMembers(Twitter, username, friendsList, userLists) {
 
 /**
  * Get the list of the unlisted friends.
-
- * @return {void}
- */
-/**
- * Get the list of the unlisted friends.
  * @param {string} username - The twitter username.
  * @param {string} consumerKey - Twitter consumer key.
  * @param {[type]} consumerSecret - Twitter consumer secret.
@@ -85,6 +81,7 @@ function getUnlistedFriends(username, consumerKey, consumerSecret) {
   });
 
   Promise.all([friends(Twitter, username), lists(Twitter, username)]).then(response => {
+    // TODO: Convert to Promise to return and Object with the summary and the lists.
     getMembers(Twitter, username, response[0], response[1]);
   }, reason => {
     console.log(reason);
