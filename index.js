@@ -19,10 +19,11 @@ function printResults(username, friendsList) {
   let result = [`Congratulations @${username}! All your friends are in a list!`];
 
   if (friendsList && friendsList.length) {
-    result = friendsList.map(friend => (`https://twitter.com/${friend.name}`)).unshift('\n');
+    result = friendsList.map(friend => `https://twitter.com/${friend.name}`);
+    result.unshift('You have the following unlisted friends:');
   }
 
-  console.log(result.join('\n'));
+  console.log(`\n${result.join('\n')}`);
 }
 
 /**
@@ -34,15 +35,15 @@ function printResults(username, friendsList) {
  * @return {void}
  */
 
-function printSummary(userLists, friendsList, membersList, unlistedFriends) {
+function printSummary(userLists, friendsList, membersList, unlisted) {
   const summary = [
     `Lists: ${userLists.length}`,
     `Friends: ${friendsList.length}`,
     `Members: ${membersList.length}`,
-    `Unlisted friends: ${unlistedFriends.length}`,
+    `Unlisted: ${unlisted.length}`,
   ];
 
-  console.log(summary.join('\n'));
+  console.log(`\n${summary.join('\n')}`);
 }
 
 /**
@@ -54,14 +55,11 @@ function printSummary(userLists, friendsList, membersList, unlistedFriends) {
  */
 function getMembers(Twitter, username, friendsList, userLists) {
   members(Twitter, userLists).then(membersList => {
-    // TODO: Remove
-    console.log(membersList.length);
-
     const unlisted = filterFriends(friendsList, membersList);
 
     // Print the results on console
-    printResults(username, unlisted);
     printSummary(userLists, friendsList, membersList, unlisted);
+    printResults(username, unlisted);
   }, reason => {
     console.log(reason);
   });
@@ -87,10 +85,6 @@ function getUnlistedFriends(username, consumerKey, consumerSecret) {
   });
 
   Promise.all([friends(Twitter, username), lists(Twitter, username)]).then(response => {
-    // TODO: Remove
-    console.log(response[0].length);
-    console.log(response[1].length);
-
     getMembers(Twitter, username, response[0], response[1]);
   }, reason => {
     console.log(reason);

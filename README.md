@@ -8,7 +8,7 @@ You need to provide your own application keys for use the **Twitter API**.
 2. Go to the application **Keys and Access Tokens** page.
 3. Click on **Create my access token** to generate your access tokens.
 4. Put the keys on the file **keys.json.example** and rename it to **keys.json** or pass
-them as second and third argument when you use the module.
+them as **second and third arguments** when you use the libary.
 
 ## How to use
 ```javascript
@@ -19,6 +19,7 @@ unlisted.get('Garethderioth', '<PUT YOUR KEY HERE>', '<PUT YOUR KEY HERE>');
 If you have all your friends in list you will get something like:
 ```bash
 > Congratulations @Garethderioth! All your friends are in a list!
+
 Lists: 4
 Friends: 227
 Members: 227
@@ -26,7 +27,14 @@ Unlisted: 0
 ```
 But if you have unlisted friends you will get something like:
 ```bash
-# TODO
+> Lists: 4
+Friends: 229
+Members: 227
+Unlisted: 2
+
+You have the following unlisted friends:
+https://twitter.com/CodePen
+https://twitter.com/Miss_Mandaline
 ```
 
 The Twitter API has some rate limits window divided into 15 minute intervals. Learn more about it [here](https://dev.twitter.com/rest/public/rate-limiting). The library will print a message with the related error:
@@ -35,7 +43,7 @@ The Twitter API has some rate limits window divided into 15 minute intervals. Le
 ```
 
 ## Notes
-In order to avoid the Twitter API rate limits you can search only in 15 public lists.
+In order to avoid the Twitter API rate limit, this library retrieves only **6000 friends**, **15 public lists** and **5000 members** of each list.
 
 ## Roadmap
 * Refactor to use Map() or Set()
