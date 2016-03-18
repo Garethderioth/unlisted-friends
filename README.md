@@ -1,5 +1,5 @@
 # Unlisted Friends
-A simple tool for verify which friends are not in your lists.
+A library for verify which following friends on Twitter that are not in your lists.
 
 ## Install and setup
 ```bash
@@ -41,11 +41,11 @@ The Twitter API has some rate limits window divided into 15 minute intervals. Le
 ```
 
 ## Notes
-In order to avoid the Twitter API rate limit, this library retrieves only **6000 friends**, **15 public lists** and **5000 members** of each list.
+In order to avoid the Twitter API rate limit, this library retrieves only **6000 friends**, **15 public lists** and **5000 members** for each list.
 
 ## Roadmap
-* Refactor to use Map() or Set()
-* Include tests
+* Change the tests to mocha and chai
+* Use istanbul for the coverage
 * Include CI badges
 * Include version badge
 * Improve retrieve lists data limit

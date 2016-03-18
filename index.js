@@ -47,6 +47,4 @@ function getUnlisted(username, consumerKey, consumerSecret) {
   .then(friendlist => friendlist.map(friend => friend.name));
 }
 
-module.exports = {
-  get: getUnlisted,
-};
+module.exports = { get: getUnlisted };

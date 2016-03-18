@@ -1,7 +1,7 @@
 {
   "name": "unlisted-friends",
   "version": "1.1.0",
-  "description": "A simple tool for verify which friends are not in your lists.",
+  "description": "A library for verify which following friends on Twitter that are not in your lists.",
   "main": "index.js",
   "scripts": {
     "test": "tape 'tests/**/*.js' | faucet"
@@ -13,7 +13,8 @@
   "keywords": [
     "twitter",
     "unlisted",
-    "friends"
+    "friends",
+    "lists"
   ],
   "author": "Guillermo Rodas <garethderioth@gmail.com>",
   "license": "MIT",
