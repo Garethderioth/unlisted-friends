@@ -3,9 +3,7 @@
 const tape = require('tape');
 const concatFriends = require('../../../lib/utils/concat-friends');
 
-tape('Concat a friend list with a Twitter friend list', (assert) => {
-  const msg = 'The lists are not the same';
-
+tape('Concat Friends: Should concat a friend list with a Twitter friend list', assert => {
   const friendsList = [
     {
       id: 1,
@@ -31,7 +29,7 @@ tape('Concat a friend list with a Twitter friend list', (assert) => {
   const expected = [
     {
       id: 1,
-      name: 'foo'
+      name: 'foo',
     },
     {
       id: 3,
@@ -47,6 +45,6 @@ tape('Concat a friend list with a Twitter friend list', (assert) => {
     },
   ];
 
-  assert.deepEqual(concatFriends(friendsList, usersList), expected, msg);
+  assert.deepEqual(concatFriends(friendsList, usersList), expected);
   assert.end();
 });

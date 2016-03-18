@@ -2,7 +2,6 @@
 
 const filterFriends = require('./lib/utils/filter-friends');
 
-
 const friends = require('./lib/friends');
 const lists = require('./lib/lists');
 const members = require('./lib/members');
@@ -11,86 +10,43 @@ const keys = require('./keys');
 const Twit = require('twit');
 
 /**
- * Print the result of the search given a list of friends.
+ * Get the list of the unlisted friends.
+ * @param {Object} Twitter - The Twit instance.
  * @param {string} username - The twitter username.
- * @param {Object[{id: number, name: string}]} friendsList - The list of friends.
- * @return {void}
+ * @param {Object[{id: number, name: string}]} membersList - The members of the lists.
+ * @return {Object[{id: number, name: string}]} unlistedList - The list of unlisted friends.å
  */
-function printResults(username, friendsList) {
-  let result = [`Congratulations @${username}! All your friends are in a list!`];
+function unlisted(Twitter, username, membersList) {
+  return friends(Twitter, username).then(friendsList => {
+    return new Promise((resolve, reject) => {
+      const unlistedList = filterFriends(friendsList, membersList);
 
-  if (friendsList && friendsList.length) {
-    result = friendsList.map(friend => `https://twitter.com/${friend.name}`);
-    result.unshift('You have the following unlisted friends:');
-  }
-
-  console.log(`\n${result.join('\n')}`);
-}
-
-/**
- * Print the summary of the search given every list.
- * @param {Object[{id: number, name: string}]} friendsList - The list of friends.
- * @param {Object[{id: number, name: string}]} userLists - The lists of user's list.
- * @param {Object[{id: number, name: string}} membersList - The list of the list's members.
- * @param {Object[{id: number, name: string}} unlistedFriends - The list of the unlisted friends.
- * @return {void}
- */
-
-function printSummary(userLists, friendsList, membersList, unlisted) {
-  const summary = [
-    `Lists: ${userLists.length}`,
-    `Friends: ${friendsList.length}`,
-    `Members: ${membersList.length}`,
-    `Unlisted: ${unlisted.length}`,
-  ];
-
-  console.log(`\n${summary.join('\n')}`);
-}
-
-/**
- * Get the members of the given lists using a Promise.
- * @param {string} username - The twitter username.
- * @param {Object[{id: number, name: string}]} friendsList - The list of friends.
- * @param {Object[{id: number, name: string}]} userLists - The lists of user's list
- * @return {void}
- */
-function getMembers(Twitter, username, friendsList, userLists) {
-  members(Twitter, userLists).then(membersList => {
-    const unlisted = filterFriends(friendsList, membersList);
-
-    // Print the results on console
-    printSummary(userLists, friendsList, membersList, unlisted);
-    printResults(username, unlisted);
-  }, reason => {
-    console.log(reason);
+      return unlistedList && unlistedList.length ? resolve(unlistedList) :
+        reject(new Error(`@${username} does not have unlisted friends.`));
+    });
   });
 }
 
 /**
- * Get the list of the unlisted friends.
+ * Get A promise with the list of the names of the unlisted friends.
  * @param {string} username - The twitter username.
  * @param {string} consumerKey - Twitter consumer key.
  * @param {[type]} consumerSecret - Twitter consumer secret.
- * @return {void}
+ * @return {string[]} friendlist - The names of the unlisted friends.
  */
-function getUnlistedFriends(username, consumerKey, consumerSecret) {
+function getUnlisted(username, consumerKey, consumerSecret) {
   const Twitter = new Twit({
     app_only_auth: true,
     consumer_key: consumerKey || keys.CONSUMER_KEY,
     consumer_secret: consumerSecret || keys.CONSUMER_SECRET,
   });
 
-  Promise.all([friends(Twitter, username), lists(Twitter, username)]).then(response => {
-    // TODO: Convert to Promise to return and Object with the summary and the lists.
-    getMembers(Twitter, username, response[0], response[1]);
-  }, reason => {
-    console.log(reason);
-  });
+  return lists(Twitter, username)
+  .then(userLists => members(Twitter, userLists))
+  .then(membersList => unlisted(Twitter, username, membersList))
+  .then(friendlist => friendlist.map(friend => friend.name));
 }
 
-// Command line input
-getUnlistedFriends(process.argv[2]);
-
 module.exports = {
-  get: getUnlistedFriends,
+  get: getUnlisted,
 };

@@ -1,6 +1,6 @@
 {
   "name": "unlisted-friends",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple tool for verify which friends are not in your lists.",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,8 @@
     "twit": "2.2.2"
   },
   "devDependencies": {
+    "commitizen": "2.7.2",
+    "cz-conventional-changelog": "1.1.5",
     "eslint": "2.4.0",
     "eslint-config-airbnb": "6.1.0",
     "faucet": "0.0.1",

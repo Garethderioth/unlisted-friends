@@ -13,30 +13,25 @@ You need to provide your own application keys for use the **Twitter API**.
 4. Pass the _consumer key_ and _consumer secret_ as **second and third arguments** respectively when you use the library.
 
 ## How to use
+The method returns a Promise with the a list of the names of the unlisted friends.
 ```javascript
 const unlisted = require('unlisted-friends');
-unlisted.get('Garethderioth', '<PUT YOUR KEY HERE>', '<PUT YOUR KEY HERE>');
+const friends = unlisted.get('Garethderioth', '<PUT YOUR KEY HERE>', '<PUT YOUR KEY HERE>');
+
+friends.then(response => {
+  console.log(response);
+}, error => {
+  console.log(error);
+})
 ```
 
 If you have all your friends in list you will get something like:
 ```bash
-> Congratulations @Garethderioth! All your friends are in a list!
-
-Lists: 4
-Friends: 227
-Members: 227
-Unlisted: 0
+> [Error: @Garethderioth does not have unlisted friends.]
 ```
 But if you have unlisted friends you will get something like:
 ```bash
-> Lists: 4
-Friends: 229
-Members: 227
-Unlisted: 2
-
-You have the following unlisted friends:
-https://twitter.com/CodePen
-https://twitter.com/Miss_Mandaline
+> ['CodePen', 'Miss_Mandaline']
 ```
 
 The Twitter API has some rate limits window divided into 15 minute intervals. Learn more about it [here](https://dev.twitter.com/rest/public/rate-limiting). The library will print a message with the related error:
@@ -49,7 +44,6 @@ The Twitter API has some rate limits window divided into 15 minute intervals. Le
 In order to avoid the Twitter API rate limit, this library retrieves only **6000 friends**, **15 public lists** and **5000 members** of each list.
 
 ## Roadmap
-* Refactor to return a Promise
 * Refactor to use Map() or Set()
 * Include tests
 * Include CI badges
