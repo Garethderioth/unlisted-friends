@@ -44,9 +44,9 @@ The Twitter API has some rate limits window divided into 15 minute intervals. Le
 In order to avoid the Twitter API rate limit, this library retrieves only **6000 friends**, **15 public lists** and **5000 members** for each list.
 
 ## Roadmap
-* Change the tests to mocha and chai
-* Use istanbul for the coverage
-* Include CI badges
-* Include version badge
-* Improve retrieve lists data limit
-* Permit access to the private lists
+* Include ES2015 support
+* Change the tests to AVA
+* Include Istanbul coverage
+* Include semantic-release
+* Include test and coverage checking
+* Include badges
