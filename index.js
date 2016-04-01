@@ -13,13 +13,13 @@ const Twit = require('twit');
  * Get the list of the unlisted friends.
  * @param {Object} Twitter - The Twit instance.
  * @param {string} username - The twitter username.
- * @param {Object[{id: number, name: string}]} membersList - The members of the lists.
+ * @param {Object[{id: number, name: string}]} memberList - The members of the lists.
  * @return {Object[{id: number, name: string}]} unlistedList - The list of unlisted friends.å
  */
-function unlisted(Twitter, username, membersList) {
-  return friends(Twitter, username).then(friendsList => {
+function unlisted(Twitter, username, memberList) {
+  return friends(Twitter, username).then(friendList => {
     return new Promise((resolve, reject) => {
-      const unlistedList = filterFriends(friendsList, membersList);
+      const unlistedList = filterFriends(friendList, memberList);
 
       return unlistedList && unlistedList.length ? resolve(unlistedList) :
         reject(new Error(`@${username} does not have unlisted friends.`));
@@ -43,7 +43,7 @@ function getUnlisted(username, consumerKey, consumerSecret) {
 
   return lists(Twitter, username)
   .then(userLists => members(Twitter, userLists))
-  .then(membersList => unlisted(Twitter, username, membersList))
+  .then(memberList => unlisted(Twitter, username, memberList))
   .then(friendlist => friendlist.map(friend => friend.name));
 }
 
