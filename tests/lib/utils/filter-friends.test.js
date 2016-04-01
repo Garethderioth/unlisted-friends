@@ -1,7 +1,7 @@
 'use strict';
 
 const tape = require('tape');
-const filterFriends = require('../../../lib/utils/filter-friends');
+const filterFriends = require('../../../../lib/utils/filter-friends');
 
 tape('Filter friends: Should filter friends that are not members of lists', assert => {
   const friendsList = [

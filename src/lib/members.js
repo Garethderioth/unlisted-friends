@@ -1,7 +1,5 @@
-'use strict';
-
-const MAX_COUNT_MEMBERS = require('./constants').MAX_COUNT_MEMBERS;
-const concatFriends = require('./utils/concat-friends');
+import { MAX_COUNT_MEMBERS } from './constants';
+import concatFriends from './utils/concat-friends';
 
 /**
  * A Promise that returns the members given a list of lists.
@@ -35,4 +33,4 @@ function members(Twitter, listsList, stored) {
   });
 }
 
-module.exports = members;
+export default members;

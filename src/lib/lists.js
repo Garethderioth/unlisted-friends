@@ -1,6 +1,4 @@
-'use strict';
-
-const MAX_COUNT_LISTS = require('./constants').MAX_COUNT_LISTS;
+import { MAX_COUNT_LISTS } from './constants';
 
 /**
  * A Promise that returns the lists given a username.
@@ -33,4 +31,4 @@ function lists(Twitter, username) {
   });
 }
 
-module.exports = lists;
+export default lists;

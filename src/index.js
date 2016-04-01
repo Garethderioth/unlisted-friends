@@ -1,13 +1,11 @@
-'use strict';
+import filterFriends from './lib/utils/filter-friends';
 
-const filterFriends = require('./lib/utils/filter-friends');
+import friends from './lib/friends';
+import lists from './lib/lists';
+import members from './lib/members';
 
-const friends = require('./lib/friends');
-const lists = require('./lib/lists');
-const members = require('./lib/members');
-
-const keys = require('./keys');
-const Twit = require('twit');
+import keys from './keys';
+import Twit from 'twit';
 
 /**
  * Get the list of the unlisted friends.
@@ -47,4 +45,4 @@ function getUnlisted(username, consumerKey, consumerSecret) {
   .then(friendlist => friendlist.map(friend => friend.name));
 }
 
-module.exports = { get: getUnlisted };
+export const get = getUnlisted;

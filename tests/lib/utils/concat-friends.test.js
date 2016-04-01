@@ -1,7 +1,7 @@
 'use strict';
 
 const tape = require('tape');
-const concatFriends = require('../../../lib/utils/concat-friends');
+const concatFriends = require('../../../../lib/utils/concat-friends');
 
 tape('Concat Friends: Should concat a friend list with a Twitter friend list', assert => {
   const friendsList = [

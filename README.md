@@ -1,4 +1,8 @@
 # Unlisted Friends
+[![Travis](https://img.shields.io/travis/Garethderioth/unlisted-friends.svg)]()
+[![npm](https://img.shields.io/npm/v/unlisted-friends.svg)]()
+[![npm](https://img.shields.io/npm/dt/unlisted-friends.svg)]()
+
 A library for verify which following friends on Twitter that are not in your lists.
 
 ## Install and setup
@@ -44,9 +48,6 @@ The Twitter API has some rate limits window divided into 15 minute intervals. Le
 In order to avoid the Twitter API rate limit, this library retrieves only **6000 friends**, **15 public lists** and **5000 members** for each list.
 
 ## Roadmap
-* Include ES2015 support
-* Change the tests to AVA
-* Include Istanbul coverage
-* Include semantic-release
-* Include test and coverage checking
-* Include badges
+* Refactor into ES2015
+* Use AVA for testing
+* Include coverage

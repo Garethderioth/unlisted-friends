@@ -1,8 +1,6 @@
-'use strict';
-
-const MAX_COUNT_FRIENDS = require('./constants').MAX_COUNT_FRIENDS;
-const MAX_FRIENDS_CALLS = require('./constants').MAX_FRIENDS_CALLS;
-const concatFriends = require('./utils/concat-friends');
+import { MAX_COUNT_FRIENDS } from './constants';
+import { MAX_FRIENDS_CALLS } from './constants';
+import concatFriends from './utils/concat-friends';
 
 /**
  * A Promise that returns the friends given a username.
@@ -21,10 +19,12 @@ function friends(Twitter, username, stored) {
     cursor: (stored && stored.cursor) || -1,
   };
 
+  const noUsers = data => data && data.users && !data.users.length;
+
   return new Promise((resolve, reject) => {
     Twitter.get('friends/list', parameters, (err, data) => {
-      if (err || (data && data.users && !data.users.length)) {
-        return reject(data && data.users && !data.users.length ?
+      if (err || noUsers(data)) {
+        return reject(noUsers(data) ?
           new Error(`@${username} is not following users threw in friends module.`) :
           new Error(`${err.message} From Twitter API threw in friends module.`));
       }
@@ -40,4 +40,4 @@ function friends(Twitter, username, stored) {
   });
 }
 
-module.exports = friends;
+export default friends;
