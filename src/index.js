@@ -8,6 +8,20 @@ import keys from './keys';
 import Twit from 'twit';
 
 /**
+ * Instance a Twit object
+ * @param {string} consumerKey - Twitter consumer key.
+ * @param {[type]} consumerSecret - Twitter consumer secret.
+ * @return {Object} Twit instanced object
+ */
+function instanceTwit(consumerKey, consumerSecret) {
+  return new Twit({
+    app_only_auth: true,
+    consumer_key: consumerKey || (keys && keys.CONSUMER_KEY),
+    consumer_secret: consumerSecret || (keys && keys.CONSUMER_SECRET),
+  });
+}
+
+/**
  * Get the list of the unlisted friends.
  * @param {Object} Twitter - The Twit instance.
  * @param {string} username - The twitter username.
@@ -33,11 +47,7 @@ function unlisted(Twitter, username, memberList) {
  * @return {string[]} friendlist - The names of the unlisted friends.
  */
 function getUnlisted(username, consumerKey, consumerSecret) {
-  const Twitter = new Twit({
-    app_only_auth: true,
-    consumer_key: consumerKey || keys.CONSUMER_KEY,
-    consumer_secret: consumerSecret || keys.CONSUMER_SECRET,
-  });
+  const Twitter = instanceTwit(consumerKey, consumerSecret);
 
   return lists(Twitter, username)
   .then(userLists => members(Twitter, userLists))

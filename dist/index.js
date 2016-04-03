@@ -32,6 +32,20 @@ var _twit2 = _interopRequireDefault(_twit);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
+ * Instance a Twit object
+ * @param {string} consumerKey - Twitter consumer key.
+ * @param {[type]} consumerSecret - Twitter consumer secret.
+ * @return {Object} Twit instanced object
+ */
+function instanceTwit(consumerKey, consumerSecret) {
+  return new _twit2.default({
+    app_only_auth: true,
+    consumer_key: consumerKey || _keys2.default && _keys2.default.CONSUMER_KEY,
+    consumer_secret: consumerSecret || _keys2.default && _keys2.default.CONSUMER_SECRET
+  });
+}
+
+/**
  * Get the list of the unlisted friends.
  * @param {Object} Twitter - The Twit instance.
  * @param {string} username - The twitter username.
@@ -56,11 +70,7 @@ function unlisted(Twitter, username, memberList) {
  * @return {string[]} friendlist - The names of the unlisted friends.
  */
 function getUnlisted(username, consumerKey, consumerSecret) {
-  var Twitter = new _twit2.default({
-    app_only_auth: true,
-    consumer_key: consumerKey || _keys2.default.CONSUMER_KEY,
-    consumer_secret: consumerSecret || _keys2.default.CONSUMER_SECRET
-  });
+  var Twitter = instanceTwit(consumerKey, consumerSecret);
 
   return (0, _lists2.default)(Twitter, username).then(function (userLists) {
     return (0, _members2.default)(Twitter, userLists);

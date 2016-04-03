@@ -1,7 +1,7 @@
 # Unlisted Friends
-[![Travis](https://img.shields.io/travis/Garethderioth/unlisted-friends.svg)]()
-[![npm](https://img.shields.io/npm/v/unlisted-friends.svg)]()
-[![npm](https://img.shields.io/npm/dt/unlisted-friends.svg)]()
+[![Travis](https://img.shields.io/travis/Garethderioth/unlisted-friends.svg)](https://travis-ci.org/Garethderioth/unlisted-friends)
+[![npm](https://img.shields.io/npm/v/unlisted-friends.svg)](https://www.npmjs.com/package/unlisted-friends)
+[![npm](https://img.shields.io/npm/dt/unlisted-friends.svg)](https://www.npmjs.com/package/unlisted-friends)
 
 A library for verify which following friends on Twitter that are not in your lists.
 
