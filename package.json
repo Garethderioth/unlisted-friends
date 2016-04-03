@@ -6,7 +6,7 @@
     "test": "ava 'tests/**/*.test.js' --verbose",
     "watch:test": "echo \"Error: no watch test specified\"",
     "build": "babel src -d dist",
-    "postbuild": "cp keys.json dist/keys.json",
+    "postbuild": "cp keys.json.example dist/keys.json",
     "check-coverage": "echo \"Error: no coverage specified\"",
     "report-coverage": "echo \"Error: no report coverage specified\"",
     "commit": "git-cz",
