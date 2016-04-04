@@ -4,7 +4,6 @@ import friends from './lib/friends';
 import lists from './lib/lists';
 import members from './lib/members';
 
-import keys from './keys';
 import Twit from 'twit';
 
 /**
@@ -16,8 +15,8 @@ import Twit from 'twit';
 function instanceTwit(consumerKey, consumerSecret) {
   return new Twit({
     app_only_auth: true,
-    consumer_key: consumerKey || (keys && keys.CONSUMER_KEY),
-    consumer_secret: consumerSecret || (keys && keys.CONSUMER_SECRET),
+    consumer_key: consumerKey,
+    consumer_secret: consumerSecret,
   });
 }
 

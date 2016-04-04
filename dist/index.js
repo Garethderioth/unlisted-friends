@@ -21,10 +21,6 @@ var _members = require('./lib/members');
 
 var _members2 = _interopRequireDefault(_members);
 
-var _keys = require('./keys');
-
-var _keys2 = _interopRequireDefault(_keys);
-
 var _twit = require('twit');
 
 var _twit2 = _interopRequireDefault(_twit);
@@ -40,8 +36,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function instanceTwit(consumerKey, consumerSecret) {
   return new _twit2.default({
     app_only_auth: true,
-    consumer_key: consumerKey || _keys2.default && _keys2.default.CONSUMER_KEY,
-    consumer_secret: consumerSecret || _keys2.default && _keys2.default.CONSUMER_SECRET
+    consumer_key: consumerKey,
+    consumer_secret: consumerSecret
   });
 }
 

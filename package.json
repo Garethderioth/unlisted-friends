@@ -6,7 +6,6 @@
     "test": "ava 'tests/**/*.test.js' --verbose",
     "watch:test": "echo \"Error: no watch test specified\"",
     "build": "babel src -d dist",
-    "postbuild": "cp src/keys.json.example dist/keys.json.example",
     "check-coverage": "echo \"Error: no coverage specified\"",
     "report-coverage": "echo \"Error: no report coverage specified\"",
     "precommit": "npm run build && git add dist",
