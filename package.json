@@ -10,7 +10,7 @@
     "report-coverage": "echo \"Error: no report coverage specified\"",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "ava 'tests/**/*.test.js' --verbose",
-    "watch:test": "ava 'tests/**/*.test.js' --verbose --watch"
+    "test:watch": "ava 'tests/**/*.test.js' --verbose --watch"
   },
   "repository": {
     "type": "git",
