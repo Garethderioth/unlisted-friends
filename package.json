@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "ava 'tests/**/*.test.js' --verbose",
-    "watch:test": "echo \"Error: no watch test specified\"",
+    "watch:test": "ava 'tests/**/*.test.js' --verbose --watch",
     "build": "babel src -d dist",
     "check-coverage": "echo \"Error: no coverage specified\"",
     "report-coverage": "echo \"Error: no report coverage specified\"",
@@ -49,5 +49,9 @@
     "ghooks": {
       "pre-commit": "npm run test && npm run check-coverage"
     }
+  },
+  "ava": {
+    "require": "babel-register",
+    "babel": "inherit"
   }
 }

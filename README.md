@@ -50,3 +50,5 @@ In order to avoid the Twitter API rate limit, this library retrieves only **6000
 ## Roadmap
 * Use AVA for testing
 * Include coverage with nyc
+* Include codecov support
+* Include CLI when is installed as a global
