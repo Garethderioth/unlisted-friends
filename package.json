@@ -54,5 +54,9 @@
   "ava": {
     "require": "babel-register",
     "babel": "inherit"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Garethderioth/unlisted-friends/issues"
+  },
+  "homepage": "https://github.com/Garethderioth/unlisted-friends#readme"
 }
