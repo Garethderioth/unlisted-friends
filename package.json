@@ -3,14 +3,14 @@
   "description": "A library for verify which following friends on Twitter that are not in your lists.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "ava 'tests/**/*.test.js' --verbose",
-    "watch:test": "ava 'tests/**/*.test.js' --verbose --watch",
     "build": "babel src -d dist",
     "check-coverage": "echo \"Error: no coverage specified\"",
-    "report-coverage": "echo \"Error: no report coverage specified\"",
-    "precommit": "npm run build && git add dist",
     "commit": "git-cz",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "precommit": "npm run build && git add dist",
+    "report-coverage": "echo \"Error: no report coverage specified\"",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "test": "ava 'tests/**/*.test.js' --verbose",
+    "watch:test": "ava 'tests/**/*.test.js' --verbose --watch"
   },
   "repository": {
     "type": "git",
