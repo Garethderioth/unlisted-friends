@@ -20,7 +20,7 @@ You need to provide your own application keys for use the **Twitter API**.
 The method returns a Promise with the a list of the names of the unlisted friends.
 ```javascript
 const unlisted = require('unlisted-friends');
-const friends = unlisted.get('Garethderioth', '<PUT YOUR KEY HERE>', '<PUT YOUR KEY HERE>');
+const friends = unlisted.get('Garethderioth', '<PUT YOUR KEY HERE>', '<PUT YOUR SECRET HERE>');
 
 friends.then(response => {
   console.log(response);
