@@ -28,7 +28,7 @@
     "twit": "2.2.2"
   },
   "engines": {
-    "node": "4.3.2"
+    "node": "6.3.0"
   },
   "devDependencies": {
     "ava": "0.13.0",
