@@ -30,7 +30,7 @@ function unlisted(Twitter, username, memberList) {
  * @param {[type]} consumerSecret - Twitter consumer secret.
  * @return {string[]} friendlist - The names of the unlisted friends.
  */
-function get(username, consumerKey, consumerSecret) {
+export function get(username, consumerKey, consumerSecret) {
   const Twitter = connectToTwitter(consumerKey, consumerSecret);
 
   return lists(Twitter, username)
@@ -38,5 +38,3 @@ function get(username, consumerKey, consumerSecret) {
   .then(memberList => unlisted(Twitter, username, memberList))
   .then(friendlist => friendlist.map(friend => friend.name));
 }
-
-export default get;

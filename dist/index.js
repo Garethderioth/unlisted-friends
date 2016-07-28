@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.get = get;
 
 var _connectToTwitter = require('./lib/utils/connect-to-twitter');
 
@@ -63,5 +64,3 @@ function get(username, consumerKey, consumerSecret) {
     });
   });
 }
-
-exports.default = get;
