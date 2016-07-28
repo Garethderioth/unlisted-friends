@@ -33,7 +33,10 @@ test(`Given an username that doesn\'t follow anyone
 test(`Given an undefined username
       When I ask for his/her friend list
       Then I should throw an error.`, t => {
-  const Twitter = connectToTwitter(keys.CONSUMER_KEY, keys.CONSUMER_SECRET);
+  const Twitter = connectToTwitter(
+    keys.CONSUMER_KEY || undefined,
+    keys.CONSUMER_SECRET || undefined
+  );
 
   t.throws(friends(Twitter));
 });
