@@ -1,7 +1,10 @@
 import test from 'ava';
 import filterFriends from '../src/lib/utils/filter-friends';
 
-test('Filter a friend list given a member list without a friend', t => {
+test(`Given a friend list that don\'t have members
+        And a member list
+      When I filter if my friends are members
+      Then I should have a friend list that are not members.`, t => {
   const friendList = [
     {
       id: 66,
@@ -27,10 +30,13 @@ test('Filter a friend list given a member list without a friend', t => {
     },
   ];
 
-  t.same(filteredList, filterFriends(friendList, memberList));
+  t.deepEqual(filteredList, filterFriends(friendList, memberList));
 });
 
-test('Not filter a friend list given a member list with all friends', t => {
+test(`Given a friend list that have members
+        And a member list
+      When I filter if my friends are members
+      Then I should have and empty list.`, t => {
   const friendList = [
     {
       id: 66,
@@ -55,5 +61,5 @@ test('Not filter a friend list given a member list with all friends', t => {
 
   const filteredList = [];
 
-  t.same(filteredList, filterFriends(friendList, memberList));
+  t.deepEqual(filteredList, filterFriends(friendList, memberList));
 });

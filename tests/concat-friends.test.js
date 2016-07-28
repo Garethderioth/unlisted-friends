@@ -1,7 +1,10 @@
 import test from 'ava';
 import concatFriends from '../src/lib/utils/concat-friends';
 
-test('Concat a friend list with a user list', t => {
+test(`Given an friend list
+        And a user list
+      When I merged them
+      Then I should have a merged list.`, t => {
   const friendList = [
     {
       id: 66,
@@ -35,5 +38,11 @@ test('Concat a friend list with a user list', t => {
     },
   ];
 
-  t.same(concatedList, concatFriends(friendList, userList));
+  t.deepEqual(concatedList, concatFriends(friendList, userList));
+});
+
+test(`Given empty lists
+      When I try to merged them
+      Then I should have and empty list.`, t => {
+  t.deepEqual([], concatFriends());
 });

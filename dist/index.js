@@ -3,7 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.get = undefined;
+exports.unlisted = unlisted;
+
+var _connectToTwitter = require('./lib/utils/connect-to-twitter');
+
+var _connectToTwitter2 = _interopRequireDefault(_connectToTwitter);
 
 var _filterFriends = require('./lib/utils/filter-friends');
 
@@ -21,25 +25,7 @@ var _members = require('./lib/members');
 
 var _members2 = _interopRequireDefault(_members);
 
-var _twit = require('twit');
-
-var _twit2 = _interopRequireDefault(_twit);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Instance a Twit object
- * @param {string} consumerKey - Twitter consumer key.
- * @param {[type]} consumerSecret - Twitter consumer secret.
- * @return {Object} Twit instanced object
- */
-function instanceTwit(consumerKey, consumerSecret) {
-  return new _twit2.default({
-    app_only_auth: true,
-    consumer_key: consumerKey,
-    consumer_secret: consumerSecret
-  });
-}
 
 /**
  * Get the list of the unlisted friends.
@@ -65,8 +51,8 @@ function unlisted(Twitter, username, memberList) {
  * @param {[type]} consumerSecret - Twitter consumer secret.
  * @return {string[]} friendlist - The names of the unlisted friends.
  */
-function getUnlisted(username, consumerKey, consumerSecret) {
-  var Twitter = instanceTwit(consumerKey, consumerSecret);
+function get(username, consumerKey, consumerSecret) {
+  var Twitter = (0, _connectToTwitter2.default)(consumerKey, consumerSecret);
 
   return (0, _lists2.default)(Twitter, username).then(function (userLists) {
     return (0, _members2.default)(Twitter, userLists);
@@ -79,4 +65,4 @@ function getUnlisted(username, consumerKey, consumerSecret) {
   });
 }
 
-var get = exports.get = getUnlisted;
+exports.default = get;
