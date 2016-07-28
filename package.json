@@ -60,6 +60,9 @@
     "require": "babel-register",
     "babel": "inherit"
   },
+  "nyc": {
+    "exclude": ["tests"]
+  },
   "bugs": {
     "url": "https://github.com/Garethderioth/unlisted-friends/issues"
   },

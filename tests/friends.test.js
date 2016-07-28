@@ -1,12 +1,9 @@
 import test from 'ava';
 import friends from '../src/lib/friends';
 import connectToTwitter from '../src/lib/utils/connect-to-twitter';
-import keys from './keys';
+import { CONSUMER_KEY, CONSUMER_SECRET } from './helpers/env-constants';
 
-const Twitter = connectToTwitter(
-  keys.CONSUMER_KEY || undefined,
-  keys.CONSUMER_SECRET || undefined
-);
+const Twitter = connectToTwitter(CONSUMER_KEY, CONSUMER_SECRET);
 
 test(`Given an username
       When I ask for his/her friend list

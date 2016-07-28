@@ -38,4 +38,4 @@ jspm_packages
 .node_repl_history
 
 # Private keys file
-tests/keys.json
+tests/helpers/keys.json

@@ -1,12 +1,9 @@
 import test from 'ava';
 import members from '../src/lib/members';
 import connectToTwitter from '../src/lib/utils/connect-to-twitter';
-import keys from './keys';
+import { CONSUMER_KEY, CONSUMER_SECRET } from './helpers/env-constants';
 
-const Twitter = connectToTwitter(
-  keys.CONSUMER_KEY || undefined,
-  keys.CONSUMER_SECRET || undefined
-);
+const Twitter = connectToTwitter(CONSUMER_KEY, CONSUMER_SECRET);
 
 test(`Given a list of lists
       When I ask for their members

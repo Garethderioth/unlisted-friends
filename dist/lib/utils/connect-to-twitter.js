@@ -16,10 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @param {[type]} consumerSecret - Twitter consumer secret.
  * @return {Object} Twit instanced object
  */
-function connectToTwitter() {
-  var consumerKey = arguments.length <= 0 || arguments[0] === undefined ? process.env.CONSUMER_KEY : arguments[0];
-  var consumerSecret = arguments.length <= 1 || arguments[1] === undefined ? process.env.CONSUMER_SECRET : arguments[1];
-
+function connectToTwitter(consumerKey, consumerSecret) {
   return new _twit2.default({
     app_only_auth: true,
     consumer_key: consumerKey,

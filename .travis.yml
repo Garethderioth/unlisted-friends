@@ -11,7 +11,7 @@ before_install:
 - npm i -g npm@^3.0.0
 before_script:
 - npm prune
-- cp tests/keys.json.example tests/keys.json
+- cp tests/helpers/keys.json.example tests/helpers/keys.json
 script:
 - npm run cover
 - npm run check-coverage
