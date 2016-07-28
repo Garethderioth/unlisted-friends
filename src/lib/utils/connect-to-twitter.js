@@ -6,7 +6,10 @@ import Twit from 'twit';
  * @param {[type]} consumerSecret - Twitter consumer secret.
  * @return {Object} Twit instanced object
  */
-function connectToTwitter(consumerKey, consumerSecret) {
+function connectToTwitter(
+  consumerKey = process.env.CONSUMER_KEY,
+  consumerSecret = process.env.CONSUMER_SECRET
+) {
   return new Twit({
     app_only_auth: true,
     consumer_key: consumerKey,
