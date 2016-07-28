@@ -12,7 +12,7 @@ import members from './lib/members';
  * @param {Object[{id: number, name: string}]} memberList - The members of the lists.
  * @return {Object[{id: number, name: string}]} unlistedList - The list of unlisted friends.å
  */
-export function unlisted(Twitter, username, memberList) {
+function unlisted(Twitter, username, memberList) {
   return friends(Twitter, username).then(friendList => {
     return new Promise((resolve, reject) => {
       const unlistedList = filterFriends(friendList, memberList);
