@@ -13,7 +13,7 @@ before_script:
 - npm prune
 - cp tests/keys.json.example tests/keys.json
 script:
-- npm run test
+- npm run cover
 - npm run check-coverage
 - npm run build
 after_success:

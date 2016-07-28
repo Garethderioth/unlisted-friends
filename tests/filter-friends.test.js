@@ -30,7 +30,7 @@ test(`Given a friend list that don\'t have members
     },
   ];
 
-  t.deepEqual(filteredList, filterFriends(friendList, memberList));
+  t.deepEqual(filterFriends(friendList, memberList), filteredList);
 });
 
 test(`Given a friend list that have members
@@ -59,7 +59,5 @@ test(`Given a friend list that have members
     },
   ];
 
-  const filteredList = [];
-
-  t.deepEqual(filteredList, filterFriends(friendList, memberList));
+  t.deepEqual(filterFriends(friendList, memberList), []);
 });

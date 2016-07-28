@@ -20,7 +20,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * stored - The recursion data.
  * @return {void}
  */
-function members(Twitter, listsList, stored) {
+function members(Twitter) {
+  var listsList = arguments.length <= 1 || arguments[1] === undefined ? [{ id: '' }] : arguments[1];
+  var stored = arguments[2];
+
   var index = stored && stored.index || 0;
 
   var parameters = {

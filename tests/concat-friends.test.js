@@ -38,11 +38,11 @@ test(`Given an friend list
     },
   ];
 
-  t.deepEqual(concatedList, concatFriends(friendList, userList));
+  t.deepEqual(concatFriends(friendList, userList), concatedList);
 });
 
 test(`Given empty lists
       When I try to merged them
       Then I should have and empty list.`, t => {
-  t.deepEqual([], concatFriends());
+  t.deepEqual(concatFriends(), []);
 });

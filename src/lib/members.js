@@ -9,7 +9,7 @@ import concatFriends from './utils/concat-friends';
  * stored - The recursion data.
  * @return {void}
  */
-function members(Twitter, listsList, stored) {
+function members(Twitter, listsList = [{ id: '' }], stored) {
   let index = (stored && stored.index) || 0;
 
   const parameters = {
@@ -19,7 +19,7 @@ function members(Twitter, listsList, stored) {
 
   return new Promise((resolve, reject) => {
     Twitter.get('lists/members', parameters, (err, data) => {
-      if (err || (data && data.users && !data.users.length)) {
+      if (err || data && data.users && !data.users.length) {
         return reject(new Error(`${err.message} From Twitter API threw in members module.`));
       }
 

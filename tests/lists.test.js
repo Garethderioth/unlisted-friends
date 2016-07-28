@@ -1,5 +1,5 @@
 import test from 'ava';
-import friends from '../src/lib/friends';
+import lists from '../src/lib/lists';
 import connectToTwitter from '../src/lib/utils/connect-to-twitter';
 import keys from './keys';
 
@@ -9,25 +9,25 @@ const Twitter = connectToTwitter(
 );
 
 test(`Given an username
-      When I ask for his/her friend list
-      Then I should have his/her friend list.`, t => {
+      When I ask his/her lists
+      Then I should have his/her lists.`, t => {
   const username = 'Garethderioth';
 
-  return friends(Twitter, username).then(friendList => {
-    t.truthy(friendList.length);
+  return lists(Twitter, username).then(userLists => {
+    t.truthy(userLists.length);
   });
 });
 
 test(`Given an username that doesn\'t follow anyone
-      When I ask for his/her friend list
+      When I ask for his/her lists
       Then I should throw an error.`, t => {
   const username = 'Pictoline';
 
-  t.throws(friends(Twitter, username));
+  t.throws(lists(Twitter, username));
 });
 
 test(`Given an undefined username
-      When I ask for his/her friend list
+      When I ask his/her lists
       Then I should throw an error.`, t => {
-  t.throws(friends(Twitter));
+  t.throws(lists(Twitter));
 });
