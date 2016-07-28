@@ -16,5 +16,5 @@ test(`Given a undefined consumer key
         And a undefined consumer secret
       When I try to connect me with Twitter
       Then I should throw an error`, t => {
-  t.throws(() => { connectToTwitter(); });
+  t.throws(connectToTwitter);
 });
