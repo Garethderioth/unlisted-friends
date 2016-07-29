@@ -62,7 +62,7 @@
     "babel": "inherit"
   },
   "nyc": {
-    "exclude": ["tests"]
+    "include": ["src/**/*.js"]
   },
   "bugs": {
     "url": "https://github.com/Garethderioth/unlisted-friends/issues"
