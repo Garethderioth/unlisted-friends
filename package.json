@@ -54,7 +54,7 @@
       "path": "cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run test && npm run check-coverage && npm run lint"
+      "pre-commit": "npm run cover && npm run check-coverage && npm run lint"
     }
   },
   "ava": {
