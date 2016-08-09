@@ -50,3 +50,9 @@ In order to avoid the Twitter API rate limit, this library retrieves only **6000
 
 ## Develop
 In order to run the tests locally you need to rename the file `keys.json.example` to `keys.json` and put your consumer and secret keys.
+
+## Roadmap
+* Refactor the ternary conditional indentation.
+* Finish the index.test.js.
+* Refactor the tests for use proxyquery.
+* Refactor the tests for use sinon.
