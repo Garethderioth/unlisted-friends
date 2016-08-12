@@ -53,6 +53,7 @@ In order to run the tests locally you need to rename the file `keys.json.example
 
 ## Roadmap
 * Refactor the ternary conditional indentation.
+* Refactor to replace the keys.json into a .env file.
 * Finish the index.test.js.
 * Refactor the tests for use proxyquery.
 * Refactor the tests for use sinon.
