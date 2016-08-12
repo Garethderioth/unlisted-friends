@@ -48,7 +48,7 @@ The Twitter API has some rate limits window divided into 15 minute intervals. Le
 ## Notes
 In order to avoid the Twitter API rate limit, this library retrieves only **6000 friends**, **15 public lists** and **5000 members** for each list.
 
-## Develop
+## Development
 In order to run the tests locally you need to rename the file `keys.json.example` to `keys.json` and put your consumer and secret keys.
 
 ## Roadmap
