@@ -8,14 +8,16 @@ A library for verify which following friends on Twitter that are not in your lis
 
 ## Install and setup
 ```bash
-npm install unlisted-friends
+npm install --save unlisted-friends
 ```
 You need to provide your own application keys for use the **Twitter API**.
 
-1. Visit *https://dev.twitter.com/apps* and register a new application.
+1. Visit **https://dev.twitter.com/apps** and register a new application.
 2. Go to the application **Keys and Access Tokens** page.
-3. Click on **Create my access token** to generate your access tokens.
+3. Click on **Create my access token** to generate your access tokens.\*
 4. Pass the _consumer key_ and _consumer secret_ as **second and third arguments** respectively when you use the library.
+
+>\* The access tokens is for have private permissions for your personal account.
 
 ## How to use
 The method returns a Promise with the a list of the names of the unlisted friends.
@@ -52,8 +54,10 @@ In order to avoid the Twitter API rate limit, this library retrieves only **6000
 In order to run the tests locally you need to rename the file `keys.json.example` to `keys.json` and put your consumer and secret keys.
 
 ## Roadmap
-* Refactor the ternary conditional indentation.
-* Refactor to replace the keys.json into a .env file.
-* Finish the index.test.js.
-* Refactor the tests for use proxyquery.
-* Refactor the tests for use sinon.
+- [] Refactor the ternary conditional indentation.
+- [] Refactor to replace the `keys.json` into a `.env` file and use `dontenv`.
+- [] Support access tokens.
+- [] Refactor the tests for use `proxyquery`.
+- [] Refactor the tests for use `sinon`.
+- [] Finish the index.test.js.
+- [] Refactor to use generators.
