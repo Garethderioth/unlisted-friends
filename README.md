@@ -41,7 +41,9 @@ But if you have unlisted friends you will get something like:
 > ['CodePen', 'Miss_Mandaline']
 ```
 
-The Twitter API has some rate limits window divided into 15 minute intervals. Learn more about it [here](https://dev.twitter.com/rest/public/rate-limiting). The library will print a message with the related error:
+The Twitter API has some rate limits window divided into 15 minute intervals when you use **application-only** authentication. [Learn more](https://dev.twitter.com/rest/public/rate-limiting).
+
+The library will print a message with the related error:
 
 ```bash
 > [Error: Rate limit exceeded From Twitter API threw in members module.]
