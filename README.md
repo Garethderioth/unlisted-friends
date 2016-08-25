@@ -41,7 +41,7 @@ But if you have unlisted friends you will get something like:
 > ['CodePen', 'Miss_Mandaline']
 ```
 
-The Twitter API has some rate limits window divided into 15 minute intervals when you use **application-only** authentication. [Learn more](https://dev.twitter.com/rest/public/rate-limiting).
+The Twitter API has some rate limits window divided into 15 minute intervals when you use **application-only authentication**. [Learn more](https://dev.twitter.com/rest/public/rate-limiting).
 
 The library will print a message with the related error:
 
