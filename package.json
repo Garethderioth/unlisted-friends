@@ -14,7 +14,8 @@
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "ava 'tests/**/*.test.js' --verbose",
-    "test:watch": "ava 'tests/**/*.test.js' --verbose --watch"
+    "watch:cover": "nodemon --quiet --watch src --exec npm run cover -s",
+    "watch:test": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
