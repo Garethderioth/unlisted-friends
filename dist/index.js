@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.unlisted = unlisted;
 exports.get = get;
 
 var _connectToTwitter = require('./lib/utils/connect-to-twitter');
