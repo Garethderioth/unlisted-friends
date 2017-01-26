@@ -1,6 +1,6 @@
 # Unlisted Friends
-[![Travis](https://img.shields.io/travis/garethderioth/unlisted-friends.svg)](https://travis-ci.org/garethderioth/unlisted-friends)
-[![Codecov](https://img.shields.io/codecov/c/github/garethderioth/unlisted-friends.svg)](https://codecov.io/github/garethderioth/unlisted-friends)
+[![Travis](https://img.shields.io/travis/glrodasz/unlisted-friends.svg)](https://travis-ci.org/glrodasz/unlisted-friends)
+[![Codecov](https://img.shields.io/codecov/c/github/glrodasz/unlisted-friends.svg)](https://codecov.io/github/glrodasz/unlisted-friends)
 [![npm](https://img.shields.io/npm/v/unlisted-friends.svg)](https://www.npmjs.com/package/unlisted-friends)
 [![npm](https://img.shields.io/npm/dt/unlisted-friends.svg)](https://www.npmjs.com/package/unlisted-friends)
 
