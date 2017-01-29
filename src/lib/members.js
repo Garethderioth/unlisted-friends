@@ -19,7 +19,7 @@ function members(Twitter, listsList = [{ id: '' }], stored) {
 
   return new Promise((resolve, reject) => {
     Twitter.get('lists/members', parameters, (err, data) => {
-      if (err || data && data.users && !data.users.length) {
+      if (err || (data && data.users && !data.users.length)) {
         return reject(new Error(`${err.message} From Twitter API threw in members module.`));
       }
 

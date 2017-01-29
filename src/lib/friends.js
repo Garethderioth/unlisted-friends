@@ -1,5 +1,4 @@
-import { MAX_COUNT_FRIENDS } from './constants';
-import { MAX_FRIENDS_CALLS } from './constants';
+import { MAX_COUNT_FRIENDS, MAX_FRIENDS_CALLS } from './constants';
 import concatFriends from './utils/concat-friends';
 
 /**

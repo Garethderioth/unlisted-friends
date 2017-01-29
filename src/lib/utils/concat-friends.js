@@ -6,7 +6,7 @@
  */
 function concatFriends(friendList = [], userList = []) {
   return friendList.concat(userList.map(
-    user => ({ id: user.id, name: user.screen_name })
+    user => ({ id: user.id, name: user.screen_name }),
   ));
 }
 

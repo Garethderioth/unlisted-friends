@@ -24,8 +24,8 @@ function lists(Twitter, username) {
 
       return resolve(
         data.lists.map(
-          list => ({ id: list.id, name: list.name })
-        )
+          list => ({ id: list.id, name: list.name }),
+        ),
       );
     });
   });

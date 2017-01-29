@@ -6,7 +6,7 @@
  */
 function filterFriends(friendsList, membersList) {
   return friendsList.filter(
-    friend => membersList.filter(member => member.id === friend.id).length === 0
+    friend => membersList.filter(member => member.id === friend.id).length === 0,
   );
 }
 
