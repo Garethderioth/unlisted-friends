@@ -23,22 +23,18 @@ You need to provide your own application keys for use the **Twitter API**.
 The method returns a Promise with the a list of the names of the unlisted friends.
 ```javascript
 const unlisted = require('unlisted-friends');
-const friends = unlisted.get('Garethderioth', '<PUT YOUR KEY HERE>', '<PUT YOUR SECRET HERE>');
+const friends = unlisted.get('glrodasz', '<PUT YOUR KEY HERE>', '<PUT YOUR SECRET HERE>');
 
-friends.then(response => {
-  console.log(response);
-}, error => {
-  console.log(error);
-})
+friends.then(console.log).catch(console.log);
 ```
 
 If you have all your friends in list you will get something like:
 ```bash
-> [Error: @Garethderioth does not have unlisted friends.]
+> [Error: @glrodasz does not have unlisted friends.]
 ```
 But if you have unlisted friends you will get something like:
 ```bash
-> ['CodePen', 'Miss_Mandaline']
+> ['hugeinc', 'auth0']
 ```
 
 The Twitter API has some rate limits window divided into 15 minute intervals when you use **application-only authentication**. [Learn more](https://dev.twitter.com/rest/public/rate-limiting).
