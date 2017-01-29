@@ -8,7 +8,7 @@ const Twitter = connectToTwitter(CONSUMER_KEY, CONSUMER_SECRET);
 test(`Given an username
       When I ask his/her lists
       Then I should have his/her lists.`, t => {
-  const username = 'Garethderioth';
+  const username = 'glrodasz';
 
   return lists(Twitter, username).then(userLists => {
     t.truthy(userLists.length);

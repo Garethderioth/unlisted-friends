@@ -21,7 +21,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @return {void}
  */
 function members(Twitter) {
-  var listsList = arguments.length <= 1 || arguments[1] === undefined ? [{ id: '' }] : arguments[1];
+  var listsList = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [{ id: '' }];
   var stored = arguments[2];
 
   var index = stored && stored.index || 0;

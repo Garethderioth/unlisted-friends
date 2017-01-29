@@ -10,8 +10,8 @@ Object.defineProperty(exports, "__esModule", {
  * @return {void}
  */
 function concatFriends() {
-  var friendList = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
-  var userList = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
+  var friendList = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var userList = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
   return friendList.concat(userList.map(function (user) {
     return { id: user.id, name: user.screen_name };
