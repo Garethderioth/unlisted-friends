@@ -3,6 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 exports.unlisted = unlisted;
 exports.get = get;
 
@@ -52,8 +55,8 @@ function unlisted(Twitter, username, memberList) {
  * @param {[type]} consumerSecret - Twitter consumer secret.
  * @return {string[]} friendlist - The names of the unlisted friends.
  */
-function get(username, consumerKey, consumerSecret) {
-  var Twitter = (0, _connectToTwitter2.default)(consumerKey, consumerSecret);
+function get(username, consumerKey, consumerSecret, accessToken, accessTokenSecret) {
+  var Twitter = (0, _connectToTwitter2.default)(consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
   return (0, _lists2.default)(Twitter, username).then(function (userLists) {
     return (0, _members2.default)(Twitter, userLists);
@@ -64,4 +67,20 @@ function get(username, consumerKey, consumerSecret) {
       return friend.name;
     });
   });
+}
+
+// FIXME: @glrodasz command line option
+if (process.argv && process.argv.length >= 5) {
+  var _process$argv = _slicedToArray(process.argv, 7),
+      x = _process$argv[0],
+      // eslint-disable-line
+  y = _process$argv[1],
+      // eslint-disable-line
+  username = _process$argv[2],
+      consumerKey = _process$argv[3],
+      consumerSecret = _process$argv[4],
+      accessToken = _process$argv[5],
+      accessTokenSecret = _process$argv[6];
+
+  get(username, consumerKey, consumerSecret, accessToken, accessTokenSecret).then(console.log).catch(console.log);
 }

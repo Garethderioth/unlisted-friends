@@ -6,11 +6,13 @@ import Twit from 'twit';
  * @param {[type]} consumerSecret - Twitter consumer secret.
  * @return {Object} Twit instanced object
  */
-function connectToTwitter(consumerKey, consumerSecret) {
+function connectToTwitter(consumerKey, consumerSecret, accessToken, accessTokenSecret) {
   return new Twit({
     app_only_auth: true,
     consumer_key: consumerKey,
     consumer_secret: consumerSecret,
+    access_token: accessToken,
+    access_token_secret: accessTokenSecret,
   });
 }
 

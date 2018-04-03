@@ -8,7 +8,10 @@ const Twitter = connectToTwitter(CONSUMER_KEY, CONSUMER_SECRET);
 test(`Given a list of lists
       When I ask for their members
       Then I should have a list of members.`, t => {
-  const listsList = [{ id: 64132003 }, { id: 50051688 }];
+  const listsList = [
+    { slug: 'agile', userId: 18968309 },
+    { slug: 'japan', userId: 18968309 },
+  ];
 
   return members(Twitter, listsList).then(memberList => {
     t.truthy(memberList.length);

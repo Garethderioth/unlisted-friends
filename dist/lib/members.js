@@ -21,14 +21,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @return {void}
  */
 function members(Twitter) {
-  var listsList = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [{ id: '' }];
+  var listsList = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [{ slug: '', userId: 0 }];
   var stored = arguments[2];
 
   var index = stored && stored.index || 0;
 
   var parameters = {
     count: _constants.MAX_COUNT_MEMBERS,
-    list_id: listsList[index].id
+    slug: listsList[index].slug,
+    owner_id: listsList[index].userId
   };
 
   return new Promise(function (resolve, reject) {

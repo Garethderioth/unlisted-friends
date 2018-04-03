@@ -30,11 +30,28 @@ export function unlisted(Twitter, username, memberList) {
  * @param {[type]} consumerSecret - Twitter consumer secret.
  * @return {string[]} friendlist - The names of the unlisted friends.
  */
-export function get(username, consumerKey, consumerSecret) {
-  const Twitter = connectToTwitter(consumerKey, consumerSecret);
+export function get(username, consumerKey, consumerSecret, accessToken, accessTokenSecret) {
+  const Twitter = connectToTwitter(consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
   return lists(Twitter, username)
   .then(userLists => members(Twitter, userLists))
   .then(memberList => unlisted(Twitter, username, memberList))
   .then(friendlist => friendlist.map(friend => friend.name));
+}
+
+// FIXME: @glrodasz command line option
+if (process.argv && process.argv.length >= 5) {
+  const [
+    x, // eslint-disable-line
+    y, // eslint-disable-line
+    username,
+    consumerKey,
+    consumerSecret,
+    accessToken,
+    accessTokenSecret,
+  ] = process.argv;
+
+  get(username, consumerKey, consumerSecret, accessToken, accessTokenSecret)
+    .then(console.log)
+    .catch(console.log);
 }

@@ -22,11 +22,7 @@ function lists(Twitter, username) {
           new Error(`${err.message} from Twitter API threw in lists module.`));
       }
 
-      return resolve(
-        data.lists.map(
-          list => ({ id: list.id, name: list.name }),
-        ),
-      );
+      return resolve(data.lists.map(list => ({ slug: list.slug, userId: list.user.id })));
     });
   });
 }

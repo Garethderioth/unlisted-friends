@@ -29,7 +29,7 @@ function lists(Twitter, username) {
       }
 
       return resolve(data.lists.map(function (list) {
-        return { id: list.id, name: list.name };
+        return { slug: list.slug, userId: list.user.id };
       }));
     });
   });

@@ -9,12 +9,13 @@ import concatFriends from './utils/concat-friends';
  * stored - The recursion data.
  * @return {void}
  */
-function members(Twitter, listsList = [{ id: '' }], stored) {
+function members(Twitter, listsList = [{ slug: '', userId: 0 }], stored) {
   let index = (stored && stored.index) || 0;
 
   const parameters = {
     count: MAX_COUNT_MEMBERS,
-    list_id: listsList[index].id,
+    slug: listsList[index].slug,
+    owner_id: listsList[index].userId,
   };
 
   return new Promise((resolve, reject) => {
