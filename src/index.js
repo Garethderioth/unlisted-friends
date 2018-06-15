@@ -39,6 +39,8 @@ export function get(username, consumerKey, consumerSecret, accessToken, accessTo
   .then(friendlist => friendlist.map(friend => friend.name));
 }
 
+const mapHandleToTwitterLink = handle => `https://www.twitter.com/${handle}`;
+
 // FIXME: @glrodasz command line option
 if (process.argv && process.argv.length >= 5) {
   const [
@@ -52,6 +54,6 @@ if (process.argv && process.argv.length >= 5) {
   ] = process.argv;
 
   get(username, consumerKey, consumerSecret, accessToken, accessTokenSecret)
-    .then(console.log)
+    .then(unlistedFriends => console.log(unlistedFriends.map(mapHandleToTwitterLink)))
     .catch(console.log);
 }

@@ -69,6 +69,10 @@ function get(username, consumerKey, consumerSecret, accessToken, accessTokenSecr
   });
 }
 
+var mapHandleToTwitterLink = function mapHandleToTwitterLink(handle) {
+  return 'https://www.twitter.com/' + handle;
+};
+
 // FIXME: @glrodasz command line option
 if (process.argv && process.argv.length >= 5) {
   var _process$argv = _slicedToArray(process.argv, 7),
@@ -82,5 +86,7 @@ if (process.argv && process.argv.length >= 5) {
       accessToken = _process$argv[5],
       accessTokenSecret = _process$argv[6];
 
-  get(username, consumerKey, consumerSecret, accessToken, accessTokenSecret).then(console.log).catch(console.log);
+  get(username, consumerKey, consumerSecret, accessToken, accessTokenSecret).then(function (unlistedFriends) {
+    return console.log(unlistedFriends.map(mapHandleToTwitterLink));
+  }).catch(console.log);
 }
