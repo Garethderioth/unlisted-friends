@@ -6,19 +6,16 @@ cache:
 notifications:
   email: false
 node_js:
-- '6'
-before_install:
-- npm i -g npm@^3.0.0
+- '13'
 before_script:
-- npm prune
 - cp tests/helpers/keys.json.example tests/helpers/keys.json
 script:
-- npm run cover
-- npm run check-coverage
-- npm run build
+- yarn run cover
+- yarn run check-coverage
+- yarn run build
 after_success:
-- npm run report-coverage
-- npm run semantic-release
+- yarn run report-coverage
+- yarn run semantic-release
 branches:
   only:
   - master
