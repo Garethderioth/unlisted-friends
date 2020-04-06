@@ -1,7 +1,7 @@
 {
   "name": "unlisted-friends",
   "description": "A library for verify which following friends on Twitter that are not in your lists.",
-  "version": "0.0.0-development",
+  "version": "1.1.10",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
@@ -77,7 +77,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/Garethderioth/unlisted-friends/issues"
+    "url": "https://github.com/glrodasz/unlisted-friends/issues"
   },
-  "homepage": "https://github.com/Garethderioth/unlisted-friends#readme"
+  "homepage": "https://github.com/glrodasz/unlisted-friends#readme"
 }
