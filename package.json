@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Garethderioth/unlisted-friends.git"
+    "url": "https://github.com/glrodasz/unlisted-friends.git"
   },
   "keywords": [
     "twitter",
@@ -27,13 +27,14 @@
     "friends",
     "lists"
   ],
-  "author": "Guillermo Rodas <garethderioth@gmail.com>",
+  "author": "Guillermo Rodas <glrodasz@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=13.2.0",
+    "yarn": ">=1.19.2"
+  },
   "dependencies": {
     "twit": "2.2.5"
-  },
-  "engines": {
-    "node": "6.3.0"
   },
   "devDependencies": {
     "ava": "0.17.0",
@@ -51,6 +52,12 @@
     "ghooks": "2.0.0",
     "nyc": "10.1.2",
     "semantic-release": "6.3.2"
+  },
+  "resolutions": {
+    "lodash": "4.17.12",
+    "braces": "2.3.1",
+    "underscore.string": "3.3.5",
+    "minimist": "1.2.5"
   },
   "config": {
     "commitizen": {

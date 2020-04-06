@@ -24,7 +24,7 @@ export function unlisted(Twitter, username, memberList) {
 }
 
 /**
- * Get A promise with the list of the names of the unlisted friends.
+ * Get a promise with the list of the names of the unlisted friends.
  * @param {string} username - The twitter username.
  * @param {string} consumerKey - Twitter consumer key.
  * @param {[type]} consumerSecret - Twitter consumer secret.
@@ -34,14 +34,16 @@ export function get(username, consumerKey, consumerSecret, accessToken, accessTo
   const Twitter = connectToTwitter(consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
   return lists(Twitter, username)
-  .then(userLists => members(Twitter, userLists))
-  .then(memberList => unlisted(Twitter, username, memberList))
-  .then(friendlist => friendlist.map(friend => friend.name));
+    .then(userLists => members(Twitter, userLists))
+    .then(memberList => unlisted(Twitter, username, memberList))
+    .then(friendlist => friendlist.map(friend => friend.name));
 }
 
 const mapHandleToTwitterLink = handle => `https://www.twitter.com/${handle}`;
 
-// FIXME: @glrodasz command line option
+/**
+ * Check if is being calling from the command line to log the results
+ */
 if (process.argv && process.argv.length >= 5) {
   const [
     x, // eslint-disable-line

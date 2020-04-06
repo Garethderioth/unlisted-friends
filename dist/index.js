@@ -49,7 +49,7 @@ function unlisted(Twitter, username, memberList) {
 }
 
 /**
- * Get A promise with the list of the names of the unlisted friends.
+ * Get a promise with the list of the names of the unlisted friends.
  * @param {string} username - The twitter username.
  * @param {string} consumerKey - Twitter consumer key.
  * @param {[type]} consumerSecret - Twitter consumer secret.
@@ -73,7 +73,9 @@ var mapHandleToTwitterLink = function mapHandleToTwitterLink(handle) {
   return 'https://www.twitter.com/' + handle;
 };
 
-// FIXME: @glrodasz command line option
+/**
+ * Check if is being calling from the command line to log the results
+ */
 if (process.argv && process.argv.length >= 5) {
   var _process$argv = _slicedToArray(process.argv, 7),
       x = _process$argv[0],
