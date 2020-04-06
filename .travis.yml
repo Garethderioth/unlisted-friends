@@ -8,6 +8,7 @@ notifications:
 node_js:
 - '13'
 before_script:
+- npm install -g yarn
 - cp tests/helpers/keys.json.example tests/helpers/keys.json
 script:
 - yarn run cover
