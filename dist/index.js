@@ -74,7 +74,8 @@ var mapHandleToTwitterLink = function mapHandleToTwitterLink(handle) {
 };
 
 /**
- * Check if is being calling from the command line to log the results
+ * Check if is being calling from the command line through node to log the results
+ * i.e. node dist <username> <consumerKey> <consumerSecret>
  */
 if (process.argv && process.argv.length >= 5) {
   var _process$argv = _slicedToArray(process.argv, 7),
