@@ -13,6 +13,7 @@ function connectToTwitter(consumerKey, consumerSecret, accessToken, accessTokenS
     consumer_secret: consumerSecret,
     access_token: accessToken,
     access_token_secret: accessTokenSecret,
+    strictSSL: false,
   });
 }
 

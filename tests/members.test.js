@@ -9,8 +9,8 @@ test(`Given a list of lists
       When I ask for their members
       Then I should have a list of members.`, t => {
   const listsList = [
-    { slug: 'agile', userId: 18968309 },
-    { slug: 'japan', userId: 18968309 },
+    { slug: 'code-18624', userId: 18968309 },
+    { slug: 'art-44873', userId: 18968309 },
   ];
 
   return members(Twitter, listsList).then(memberList => {

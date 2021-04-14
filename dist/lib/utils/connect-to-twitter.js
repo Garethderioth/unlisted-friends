@@ -22,7 +22,8 @@ function connectToTwitter(consumerKey, consumerSecret, accessToken, accessTokenS
     consumer_key: consumerKey,
     consumer_secret: consumerSecret,
     access_token: accessToken,
-    access_token_secret: accessTokenSecret
+    access_token_secret: accessTokenSecret,
+    strictSSL: false
   });
 }
 
